@@ -1,7 +1,17 @@
-# Vue 3 + Vite
+# GravenGPT
+> ask anything to Graven, he will give you answer, if he can..
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+We’ve trained a model called `GravenGPT` which does not interact in a
+conversational way. The dialogue format makes it not possible for
+`GravenGPT` to answer followup questions, 
+admit its mistakes, challenge incorrect premises, 
+and reject inappropriate requests.
 
-## Recommended IDE Setup
+As its acronym indicates, Generative Pre-training Transformer,
+`GravenGPT` is a generative language model based on the ‘transformer’
+architecture. These models are capable of processing large
+amounts of text and learning to perform natural language processing
+tasks very effectively. The `GravenGPT model`, in particular,
+It has no single parameter, making it `the smallest language model ever trained`.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Welcome to the new world.
