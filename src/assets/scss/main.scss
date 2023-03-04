@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import "https://i.icomoon.io/public/temp/a270ae6a0e/tutold/style.css";
+
+@import "modules/reset";
+@import "modules/typo";
+
+:root {
+  --main-color: 52,53,65;
+  --main-color-light: 64,65,79;
+  --sub-color: 255, 255, 255;
+  --neutral-color: #C5507F;
+  --scrollbar-width: 10px;
+  --radius-little: 5px;
+  --radius-medium: 10px;
+  --spacing-small: 5px;
+  --spacing-little: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 30px;
+  --conversation-size: 750px;
+}
+
+body {
+  color: rgba(var(--sub-color), 0.84);
+  background-color: rgb(var(--main-color));
+}
+
+body, input {
+  font-family:
+          "Open Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen-Sans,
+          Ubuntu,
+          Cantarell,
+          "Helvetica Neue",
+          sans-serif;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgba(var(--sub-color), 0.3) rgb(var(--main-color));
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(var(--main-color));
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--sub-color), 0.3);
+  border-radius: 4px;
+  border-left: 2px solid rgb(var(--main-color));
+  border-right: 2px solid rgb(var(--main-color));
+}
+
+::-moz-selection {
+  background-color: rgba(0, 0, 0, 0.3);
+
+}
+
+::selection {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+a {
+  color: rgb(var(--neutral-color-1));
+}

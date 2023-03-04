@@ -12,6 +12,6 @@ As its acronym indicates, Generative Pre-training Transformer,
 architecture. These models are capable of processing large
 amounts of text and learning to perform natural language processing
 tasks very effectively. The `GravenGPT model`, in particular,
-It has no single parameter, making it `the smallest language model ever trained`.
+It has no single parameter, making it `the most useless language model ever trained`.
 
 Welcome to the new world.
