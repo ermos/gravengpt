@@ -38,6 +38,7 @@ const props = defineProps({
     letter-spacing: -0.03px;
     text-rendering: optimizeLegibility;
     line-height: 1.58;
+    word-break: break-all;
 
     b {
       font-weight: 700;

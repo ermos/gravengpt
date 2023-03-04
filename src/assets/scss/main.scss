@@ -1,14 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-@import "https://i.icomoon.io/public/temp/a270ae6a0e/tutold/style.css";
 
 @import "modules/reset";
-@import "modules/typo";
 
 :root {
   --main-color: 52,53,65;
   --main-color-light: 64,65,79;
   --sub-color: 255, 255, 255;
-  --neutral-color: #C5507F;
   --scrollbar-width: 10px;
   --radius-little: 5px;
   --radius-medium: 10px;
@@ -72,5 +69,5 @@ body, input {
 }
 
 a {
-  color: rgb(var(--neutral-color-1));
+  color: rgb(var(--sub-color));
 }

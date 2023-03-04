@@ -9,7 +9,11 @@ const data = reactive({
 });
 
 function handleSend() {
-  conversation.send("graven", data.message, false);
+  if (conversation.isProcess) {
+    return;
+  }
+
+  conversation.send("user", data.message, false);
   data.message = "";
 }
 </script>
@@ -19,9 +23,10 @@ function handleSend() {
     <div class="write-form__input">
       <input
           type="text"
-          placeholder="ask anything to Graven, he will give you answer, if he can.."
+          placeholder="Pose moi une question !"
           v-model="data.message"
           @keydown.enter="handleSend"
+          :disabled="conversation.isProcess"
       />
     </div>
     <p class="write-form__info">
