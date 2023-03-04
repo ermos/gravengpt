@@ -1,11 +1,28 @@
 <script setup>
+import {reactive} from "vue";
+import {useConversationStore} from "../stores/conversation.js";
 
+const conversation = useConversationStore();
+
+const data = reactive({
+  message: "",
+});
+
+function handleSend() {
+  conversation.send("graven", data.message, false);
+  data.message = "";
+}
 </script>
 
 <template>
   <div class="write-form">
     <div class="write-form__input">
-      <input type="text" placeholder="ask anything to Graven, he will give you answer, if he can.." />
+      <input
+          type="text"
+          placeholder="ask anything to Graven, he will give you answer, if he can.."
+          v-model="data.message"
+          @keydown.enter="handleSend"
+      />
     </div>
     <p class="write-form__info">
       <a href="https://github.com/ermos/gravengpt">GravenGPT Feb 13 Version</a>.
