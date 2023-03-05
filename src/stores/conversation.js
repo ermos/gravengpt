@@ -58,6 +58,7 @@ export const useConversationStore = defineStore('conversation', {
                     return;
                 }
 
+                new Audio('/sounds/answer.mp3').play();
                 this.send(
                     "graven",
                     text,
