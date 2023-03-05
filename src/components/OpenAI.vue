@@ -19,17 +19,14 @@ const data = reactive({
   apiKey: "",
 })
 
-onBeforeMount(() => {
-  if (conversation.apiKey) {
-    data.apiKey = conversation.apiKey;
-  }
-})
-
 watch(() => props.isOpened, (v) => {
   v ? open() : exit()
 });
 
 function open() {
+  if (conversation.apiKey) {
+    data.apiKey = conversation.apiKey;
+  }
   document.body.addEventListener("click", handleExit, true);
 }
 
