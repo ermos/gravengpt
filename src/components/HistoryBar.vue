@@ -1,13 +1,18 @@
 <script setup>
 
 import {useConversationStore} from "../stores/conversation.js";
+import Plus from "vue-material-design-icons/Plus.vue";
 
 const conversation = useConversationStore();
 
 function handleClick() {
+  if (conversation.isProcess) {
+    return;
+  }
+
   conversation.send(
       "graven",
-      "Je ne suis pas assez entrainé pour pouvoir tenir plus d'une discussion à la fois, " +
+      "Je ne suis pas assez entrainé pour pouvoir tenir plus d'une conversation à la fois, " +
       "déjà qu'une seule c'est compliqué...",
       true,
   );
@@ -16,7 +21,7 @@ function handleClick() {
 
 <template>
 <div class="history-bar">
-  <button class="history-bar__btn" @click="handleClick">Nouvelle conversation</button>
+  <button class="history-bar__btn" @click="handleClick"><plus class="icon" size="18" /> Nouvelle conversation</button>
 
 </div>
 </template>
@@ -37,9 +42,16 @@ function handleClick() {
     margin: var(--spacing-little);
     cursor: pointer;
     transition: all ease-in-out 200ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background-color: rgba(var(--sub-color), 0.2);
+    }
+
+    & > .icon {
+      margin-right: var(--spacing-little);
     }
   }
 }
