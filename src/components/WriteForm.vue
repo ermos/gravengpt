@@ -43,8 +43,8 @@ function handleSend() {
           @keydown.enter="handleSend"
           :disabled="conversation.isProcess"
       />
-      <send @click="handleSend" class="write-form__input--icon" size="16" />
-      <arrow v-if="data.isFirstAsk" class="write-form__input--from-ask" size="60"/>
+      <send @click="handleSend" class="write-form__input--icon" :size="16" />
+      <arrow v-if="data.isFirstAsk" class="write-form__input--from-ask" :size="60"/>
     </div>
     <p class="write-form__info">
       <a href="https://github.com/ermos/gravengpt">GravenGPT Feb 13 Version</a>.
