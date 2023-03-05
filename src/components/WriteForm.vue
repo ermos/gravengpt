@@ -3,6 +3,7 @@ import {onMounted, reactive} from "vue";
 import {useConversationStore} from "../stores/conversation.js";
 import Send from "vue-material-design-icons/Send.vue";
 import Arrow from "vue-material-design-icons/ArrowUp.vue";
+import Loading from "./Loading.vue";
 
 const conversation = useConversationStore();
 
@@ -35,6 +36,7 @@ function handleSend() {
 
 <template>
   <div class="write-form">
+    <loading v-show="conversation.isProcess" />
     <div class="write-form__input" :class="{ disabled: conversation.isProcess }">
       <input
           type="text"

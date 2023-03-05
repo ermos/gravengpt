@@ -22,6 +22,10 @@ export const useConversationStore = defineStore('conversation', {
             }
         },
         send(author, message, withTypeEffect = false, stopProcess = true) {
+            if (this.isProcess && author === "user") {
+                return;
+            }
+
             this.isProcess = true;
 
             this.messages.push({
