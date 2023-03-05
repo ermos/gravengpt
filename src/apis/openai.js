@@ -2,12 +2,16 @@ import Axios from "axios";
 import {useConversationStore} from "../stores/conversation.js";
 
 
-export const askChatGPT = (prompt) => {
+export const askChatGPT = (messages = [], config = []) => {
     const conversation = useConversationStore();
 
-    return Axios.post("https://api.openai.com/v1/completions", {
-        "model": "text-davinci-003",
-        "prompt": prompt,
+    const list = [];
+    list.push(...config);
+    list.push(...messages);
+
+    return Axios.post("https://api.openai.com/v1/chat/completions", {
+        "model": "gpt-3.5-turbo",
+        "messages": list,
         "temperature": 0,
         "max_tokens": 100,
     }, {

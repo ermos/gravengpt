@@ -1,19 +1,22 @@
 <script setup>
 import Message from "./Message.vue";
-import {nextTick, ref, watch} from "vue";
+import {nextTick, onMounted, ref, watch} from "vue";
 import WriteForm from "./WriteForm.vue";
 import {useConversationStore} from "../stores/conversation.js";
 
 const conversation = useConversationStore();
 const scroll = ref();
 
-watch(conversation.messages, () => {
+watch(() => conversation.lastUpdate, handleScroll);
+onMounted(handleScroll);
+
+function handleScroll() {
   nextTick(() => {
     if (scroll.value.scrollTop + scroll.value.clientHeight !== scroll.value.scrollHeight) {
       scroll.value.scrollTop = scroll.value.scrollHeight;
     }
   })
-})
+}
 </script>
 
 <template>
@@ -21,7 +24,7 @@ watch(conversation.messages, () => {
   <div class="conversation__messages">
     <div ref="scroll" class="conversation__messages--wrapper">
       <TransitionGroup name="conversation-slide">
-        <message v-for="(content, i) in conversation.messages" :key="i" :content="content" />
+        <message v-for="(message, i) in conversation.messages" :key="i" :message="message" />
       </TransitionGroup>
     </div>
     <div class="conversation__messages--shadow"></div>

@@ -24,7 +24,7 @@ function handleCreateConversation() {
   }
 
   conversation.send(
-      "graven",
+      "assistant",
       "Je ne suis pas assez entrainé pour pouvoir tenir plus d'une conversation à la fois, " +
       "une seule c'est déjà assez compliqué...",
       true,
@@ -37,7 +37,7 @@ function handleDeleteDiscussions() {
   }
 
   conversation.send(
-      "graven",
+      "assistant",
       "Mec.. déjà que je connais pas grand chose, laisse moi un peu de connaissance",
       true,
   );
@@ -55,29 +55,29 @@ function handleLightMode() {
     return;
   }
 
-  new Audio('/sounds/flashbang.mp3').play().then(() => {
+  conversation.runSound("flashbang");
+
+  setTimeout(() => {
+    data.isFlashbang = true;
+
     setTimeout(() => {
-      data.isFlashbang = true;
+      data.defaultCss = {
+        "--main-color-dark": root.getPropertyValue("--main-color-dark"),
+        "--main-color": root.getPropertyValue("--main-color"),
+        "--main-color-light": root.getPropertyValue("--main-color-light"),
+        "--sub-color": root.getPropertyValue("--sub-color"),
+      };
 
-      setTimeout(() => {
-        data.defaultCss = {
-          "--main-color-dark": root.getPropertyValue("--main-color-dark"),
-          "--main-color": root.getPropertyValue("--main-color"),
-          "--main-color-light": root.getPropertyValue("--main-color-light"),
-          "--sub-color": root.getPropertyValue("--sub-color"),
-        };
+      root.setProperty("--main-color-dark", "217, 217, 217");
+      root.setProperty("--main-color", "255, 255, 255");
+      root.setProperty("--main-color-light", "255, 255, 255");
+      root.setProperty("--sub-color", "0, 0, 0");
 
-        root.setProperty("--main-color-dark", "217, 217, 217");
-        root.setProperty("--main-color", "255, 255, 255");
-        root.setProperty("--main-color-light", "255, 255, 255");
-        root.setProperty("--sub-color", "0, 0, 0");
+      data.isLightMode = true;
+    }, 1000);
 
-        data.isLightMode = true;
-      }, 1000);
-
-      setTimeout(() => data.isFlashbang = false, 2000);
-    }, 1500);
-  });
+    setTimeout(() => data.isFlashbang = false, 2000);
+  }, 1500);
 }
 </script>
 

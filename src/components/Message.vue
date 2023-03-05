@@ -1,14 +1,14 @@
 <script setup>
 const props = defineProps({
-  content: {}
+  message: {}
 })
 </script>
 
 <template>
 <div class="message">
   <div class="message__content">
-    <img class="message__avatar" :src="`/images/${props.content.author}.jpg`" alt="it's graven !" width="269" height="269" />
-    <p class="message__text" v-html="props.content.message" />
+    <img class="message__avatar" :src="`/images/${props.message.role}.jpg`" alt="it's graven !" width="269" height="269" />
+    <p class="message__text" v-html="props.message.content" />
   </div>
 </div>
 </template>
