@@ -5,7 +5,9 @@ import Plus from "vue-material-design-icons/Plus.vue";
 import MessageOutline from "vue-material-design-icons/MessageOutline.vue";
 import Trash from "vue-material-design-icons/TrashCan.vue";
 import LightBulb from "vue-material-design-icons/Lightbulb.vue";
+import Robot from "vue-material-design-icons/Robot.vue";
 import {reactive} from "vue";
+import OpenAI from "./OpenAI.vue";
 
 const conversation = useConversationStore();
 
@@ -13,6 +15,7 @@ const data = reactive({
   isFlashbang: false,
   isLightMode: false,
   defaultCss: {},
+  showOpenAI: false,
 })
 
 function handleCreateConversation() {
@@ -92,12 +95,17 @@ function handleLightMode() {
       <trash class="icon" :size="18" />
       Effacer les conversations
     </div>
+    <div class="history-bar__item" @click="data.showOpenAI = true">
+      <robot class="icon" :size="18" />
+      Charger OpenAI
+    </div>
     <div class="history-bar__item" @click="handleLightMode">
       <light-bulb class="icon" :size="18" />
       Mode lumineux
     </div>
   </div>
   <div class="flashbang" v-if="data.isFlashbang"></div>
+  <open-a-i :is-opened="data.showOpenAI" @exit="data.showOpenAI = false"/>
 </div>
 </template>
 

@@ -1,16 +1,26 @@
 import {defineStore} from "pinia";
+import {askChatGPT} from "../apis/openai.js";
 
 export const useConversationStore = defineStore('conversation', {
     state: () => ({
+        apiKey: "",
         messages: [],
         isProcess: true,
         graven: {
             step: 1
         },
     }),
-    getters: {
-    },
     actions: {
+        setApiKey(key) {
+            localStorage.setItem("apiKey", key);
+            this.apiKey = key;
+        },
+        fetchApiKey() {
+            const key = localStorage.getItem("apiKey");
+            if (key) {
+                this.apiKey = key;
+            }
+        },
         send(author, message, withTypeEffect = false, stopProcess = true) {
             this.isProcess = true;
 
@@ -30,10 +40,37 @@ export const useConversationStore = defineStore('conversation', {
 
             if (author === "user") {
                 this.isProcess = true;
+
+                if (this.apiKey) {
+                    this.gravenGPTResponse(message);
+                    return;
+                }
+
                 setTimeout(() => this.gravenResponse(), 500);
             }
         },
-        gravenResponse() {
+        gravenGPTResponse(message) {
+            askChatGPT(message).then(res => {
+                const text = res.data.choices[0].text;
+
+                if (text === "" || text === "?") {
+                    this.gravenResponse(3);
+                    return;
+                }
+
+                this.send(
+                    "graven",
+                    text,
+                    true,
+                    true
+                );
+            }).catch(() => this.gravenResponse(3))
+        },
+        gravenResponse(force = null) {
+            if (force !== null) {
+                this.graven.step = force;
+            }
+
             switch (this.graven.step) {
                 case 1:
                     new Audio('/sounds/loading.mp3').play();
