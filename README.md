@@ -15,3 +15,7 @@ tasks very effectively. The `GravenGPT model`, in particular,
 It has no single parameter, making it `the most useless language model ever trained`.
 
 Welcome to the new world.
+
+<p align="center">
+<img src="/docs/ui-example.gif" alt="ui example" />
+</p>
